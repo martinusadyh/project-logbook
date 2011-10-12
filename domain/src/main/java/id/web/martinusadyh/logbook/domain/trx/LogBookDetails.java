@@ -1,8 +1,10 @@
 package id.web.martinusadyh.logbook.domain.trx;
 
+import id.web.martinusadyh.logbook.domain.Category;
 import id.web.martinusadyh.logbook.domain.BaseEntity;
-import id.web.martinusadyh.logbook.domain.UserProfile;
+import id.web.martinusadyh.logbook.domain.utility.UserProfile;
 import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -13,21 +15,33 @@ import javax.persistence.Temporal;
  * @author martinus
  */
 @Entity
-@Table(name="log_book")
-public class LogBook extends BaseEntity {
+@Table(name="logbook_details")
+public class LogBookDetails extends BaseEntity {
     
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    @Column(name="time_reporting")
     private Date timeReporting;
     
     @ManyToOne
     private UserProfile receivedBy;
     
+    @Column(name="from_user")
     private String fromUser;
+    
+    @Column(name="problem")
     private String problem;
+    
+    @Column(name="suspect")
     private String suspect;
+    
+    @Column(name="solution")
     private String solution;
     
+    @ManyToOne
+    private LookBookHeader lookBookHeader;
+    
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    @Column(name="time_solved")
     private Date timeSolved;
     
     @ManyToOne
@@ -50,6 +64,14 @@ public class LogBook extends BaseEntity {
 
     public void setFromUser(String fromUser) {
         this.fromUser = fromUser;
+    }
+
+    public LookBookHeader getLookBookHeader() {
+        return lookBookHeader;
+    }
+
+    public void setLookBookHeader(LookBookHeader lookBookHeader) {
+        this.lookBookHeader = lookBookHeader;
     }
 
     public String getProblem() {

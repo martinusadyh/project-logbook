@@ -19,7 +19,7 @@ public class BaseEntity implements Serializable {
     private static final long serialVersionUID = 1L;
     
     @Id @GeneratedValue
-    private Long id;
+    private Integer id;
     
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="created_date")
@@ -28,14 +28,6 @@ public class BaseEntity implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="last_update_date")
     private Date lastUpdateDate = new Date();
-    
-    public Date getLastUpdateDate() {
-        return lastUpdateDate;
-    }
-
-    public void setLastUpdateDate(Date lastUpdateDate) {
-        this.lastUpdateDate = lastUpdateDate;
-    }
 
     public Date getCreatedDate() {
         return createdDate;
@@ -45,36 +37,49 @@ public class BaseEntity implements Serializable {
         this.createdDate = createdDate;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((id == null) ? 0 : id.hashCode());
-        return result;
+    public Date getLastUpdateDate() {
+        return lastUpdateDate;
+    }
+
+    public void setLastUpdateDate(Date lastUpdateDate) {
+        this.lastUpdateDate = lastUpdateDate;
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
+        if (obj == null) {
             return false;
-        if (getClass() != obj.getClass())
+        }
+        if (getClass() != obj.getClass()) {
             return false;
-        BaseEntity other = (BaseEntity) obj;
-        if (id == null) {
-            if (other.id != null)
-                return false;
-        } else if (!id.equals(other.id))
+        }
+        final BaseEntity other = (BaseEntity) obj;
+        if (this.id != other.id && (this.id == null || !this.id.equals(other.id))) {
             return false;
+        }
+        if (this.createdDate != other.createdDate && (this.createdDate == null || !this.createdDate.equals(other.createdDate))) {
+            return false;
+        }
+        if (this.lastUpdateDate != other.lastUpdateDate && (this.lastUpdateDate == null || !this.lastUpdateDate.equals(other.lastUpdateDate))) {
+            return false;
+        }
         return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 43 * hash + (this.id != null ? this.id.hashCode() : 0);
+        hash = 43 * hash + (this.createdDate != null ? this.createdDate.hashCode() : 0);
+        hash = 43 * hash + (this.lastUpdateDate != null ? this.lastUpdateDate.hashCode() : 0);
+        return hash;
     }
 }

@@ -1,6 +1,7 @@
-package id.web.martinusadyh.logbook.domain;
+package id.web.martinusadyh.logbook.domain.utility;
 
-import id.web.martinusadyh.logbook.domain.trx.LogBook;
+import id.web.martinusadyh.logbook.domain.BaseEntity;
+import id.web.martinusadyh.logbook.domain.trx.LogBookDetails;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,7 +15,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name="user_profile")
 public class UserProfile extends BaseEntity {
-    
     
     @Column(name="username", unique=true)
     private String userName;
@@ -35,27 +35,11 @@ public class UserProfile extends BaseEntity {
     private String password;
 
     @OneToMany(mappedBy = "solvedBy")
-    private List<LogBook> logBooksSolvedBy;
+    private List<LogBookDetails> logBooksSolvedBy;
     
     @OneToMany(mappedBy = "receivedBy")
-    private List<LogBook> logBooksReceivedBy;
+    private List<LogBookDetails> logBooksReceivedBy;
 
-    public List<LogBook> getLogBooksReceivedBy() {
-        return logBooksReceivedBy;
-    }
-
-    public void setLogBooksReceivedBy(List<LogBook> logBooksReceivedBy) {
-        this.logBooksReceivedBy = logBooksReceivedBy;
-    }
-
-    public List<LogBook> getLogBooksSolvedBy() {
-        return logBooksSolvedBy;
-    }
-
-    public void setLogBooksSolvedBy(List<LogBook> logBooksSolvedBy) {
-        this.logBooksSolvedBy = logBooksSolvedBy;
-    }
-    
     public String getEmailAddress() {
         return emailAddress;
     }
@@ -78,6 +62,22 @@ public class UserProfile extends BaseEntity {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public List<LogBookDetails> getLogBooksReceivedBy() {
+        return logBooksReceivedBy;
+    }
+
+    public void setLogBooksReceivedBy(List<LogBookDetails> logBooksReceivedBy) {
+        this.logBooksReceivedBy = logBooksReceivedBy;
+    }
+
+    public List<LogBookDetails> getLogBooksSolvedBy() {
+        return logBooksSolvedBy;
+    }
+
+    public void setLogBooksSolvedBy(List<LogBookDetails> logBooksSolvedBy) {
+        this.logBooksSolvedBy = logBooksSolvedBy;
     }
 
     public String getPassword() {

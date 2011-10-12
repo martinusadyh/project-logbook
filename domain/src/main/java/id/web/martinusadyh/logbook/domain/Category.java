@@ -1,6 +1,7 @@
-package id.web.martinusadyh.logbook.domain.trx;
+package id.web.martinusadyh.logbook.domain;
 
 import id.web.martinusadyh.logbook.domain.BaseEntity;
+import id.web.martinusadyh.logbook.domain.trx.LogBookDetails;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,7 +22,7 @@ public class Category extends BaseEntity {
     private String modulName;
     
     @OneToMany(mappedBy = "category")
-    private List<LogBook> logBooks;
+    private List<LogBookDetails> logBooksBookDetails;
 
     public String getCategoryName() {
         return categoryName;
@@ -31,12 +32,12 @@ public class Category extends BaseEntity {
         this.categoryName = categoryName;
     }
 
-    public List<LogBook> getLogBooks() {
-        return logBooks;
+    public List<LogBookDetails> getLogBooksBookDetails() {
+        return logBooksBookDetails;
     }
 
-    public void setLogBooks(List<LogBook> logBooks) {
-        this.logBooks = logBooks;
+    public void setLogBooksBookDetails(List<LogBookDetails> logBooksBookDetails) {
+        this.logBooksBookDetails = logBooksBookDetails;
     }
 
     public String getModulName() {
