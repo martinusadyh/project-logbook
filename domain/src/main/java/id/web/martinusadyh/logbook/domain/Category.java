@@ -18,8 +18,6 @@ public class Category extends BaseEntity {
     
     @Column(name="category_name")
     private String categoryName;
-    @Column(name="modul_name")
-    private String modulName;
     
     @OneToMany(mappedBy = "category")
     private List<LogBookDetails> logBooksBookDetails;
@@ -38,13 +36,5 @@ public class Category extends BaseEntity {
 
     public void setLogBooksBookDetails(List<LogBookDetails> logBooksBookDetails) {
         this.logBooksBookDetails = logBooksBookDetails;
-    }
-
-    public String getModulName() {
-        return modulName;
-    }
-
-    public void setModulName(String modulName) {
-        this.modulName = modulName;
     }
 }

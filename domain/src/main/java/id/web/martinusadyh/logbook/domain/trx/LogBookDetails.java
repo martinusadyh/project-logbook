@@ -2,6 +2,7 @@ package id.web.martinusadyh.logbook.domain.trx;
 
 import id.web.martinusadyh.logbook.domain.Category;
 import id.web.martinusadyh.logbook.domain.BaseEntity;
+import id.web.martinusadyh.logbook.domain.Module;
 import id.web.martinusadyh.logbook.domain.utility.UserProfile;
 import java.util.Date;
 import javax.persistence.Column;
@@ -49,7 +50,18 @@ public class LogBookDetails extends BaseEntity {
     
     @ManyToOne
     private Category category;
+    
+    @ManyToOne
+    private Module module;
 
+    public Module getModule() {
+        return module;
+    }
+
+    public void setModule(Module module) {
+        this.module = module;
+    }
+    
     public Category getCategory() {
         return category;
     }
