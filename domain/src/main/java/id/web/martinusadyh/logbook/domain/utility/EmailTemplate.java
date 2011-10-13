@@ -13,8 +13,8 @@ import javax.persistence.Table;
 @Table(name="email_template")
 public class EmailTemplate extends BaseEntity {
     
-    @Column(name="receiver")
-    private String receiver;
+    @Column(name="send_to")
+    private String sendTo;
     
     @Column(name="carbon_copy")
     private String carbonCopy;
@@ -41,12 +41,12 @@ public class EmailTemplate extends BaseEntity {
         this.emailBody = emailBody;
     }
 
-    public String getReceiver() {
-        return receiver;
+    public String getSendTo() {
+        return sendTo;
     }
 
-    public void setReceiver(String receiver) {
-        this.receiver = receiver;
+    public void setSendTo(String sendTo) {
+        this.sendTo = sendTo;
     }
 
     public String getSubject() {
