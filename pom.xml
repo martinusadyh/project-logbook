@@ -17,8 +17,8 @@
         <module>impl</module>
         <module>ui</module>
         <module>ui-controller</module>
-    <module>datasource</module>
-    <module>jpa</module>
+        <module>datasource</module>
+        <module>jpa</module>
   </modules>
     
     <!-- shared version number -->
