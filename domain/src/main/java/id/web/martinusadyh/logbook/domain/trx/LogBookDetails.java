@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import org.hibernate.annotations.Index;
 
 /**
  *
@@ -17,6 +18,15 @@ import javax.persistence.Temporal;
  */
 @Entity
 @Table(name="logbook_details")
+@org.hibernate.annotations.Table(
+        appliesTo="logbook_details",
+        indexes={
+            @Index(name="idx_time_reporting", columnNames={"time_reporting"}),
+            @Index(name="idx_problem", columnNames={"problem"}), 
+            @Index(name="idx_suspect", columnNames={"suspect"}),
+            @Index(name="idx_solution", columnNames={"solution"})
+        }
+)
 public class LogBookDetails extends BaseEntity {
     
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
