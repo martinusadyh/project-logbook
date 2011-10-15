@@ -21,7 +21,7 @@ public class LogBookHeader extends BaseEntity {
     @Column(name="log_date")
     private Date logDate;
     
-    @OneToMany(mappedBy = "lookBookHeader")
+    @OneToMany(mappedBy = "logBookHeader")
     private List<LogBookDetails> logBookDetails;
 
     public List<LogBookDetails> getLogBookDetails() {
