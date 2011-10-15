@@ -2,9 +2,11 @@ Ext.define('logbook.view.utility.form.EmailTemplateForm', {
     extend: 'Ext.form.Panel',
     alias: 'widget.emailTemplateForm',
     id: 'emailTemplateForm',
-    title: 'Email Template Configuration',
+    border: false,
     bodyPadding: 5,
     autoScroll: true,
+    width: '30%',
+    height: '70%',
     
     fieldDefaults: {
         msgTarget: 'side',  // configuration for validation error msg.
@@ -32,52 +34,39 @@ Ext.define('logbook.view.utility.form.EmailTemplateForm', {
                 hidden: true,
                 id: 'lastUpdateDate'
             }, {
-                xtype: 'textfield',
+                xtype: 'textarea',
                 fieldLabel: 'Send To <font color="red">*</font>',
-                name: 'bankKode',
-                id: 'bankKode',
-                anchor: '20%',
-                disabled: true,
-                allowBlank: false
-            }, {
-                xtype: 'textfield',
-                fieldLabel: 'Nama Bank <font color="red">*</font>',
-                name: 'bankNama',
-                id: 'bankNama',
+                name: 'sendTo',
+                id: 'sendTo',
                 anchor: '50%',
                 disabled: true,
                 allowBlank: false
             }, {
                 xtype: 'textarea',
-                fieldLabel: 'Alamat <font color="red">*</font>',
-                name: 'bankAlamat',
-                id: 'bankAlamat',
-                anchor: '50% 10%',
+                fieldLabel: 'Cc <font color="red">*</font>',
+                name: 'carbonCopy',
+                id: 'carbonCopy',
+                anchor: '50%',
                 disabled: true,
                 allowBlank: false
             }, {
                 xtype: 'textfield',
-                fieldLabel: 'No. Telp',
-                name: 'bankTelp',
-                id: 'bankTelp',
+                fieldLabel: 'Subject',
+                name: 'subject',
+                id: 'subject',
+                anchor: '50%',
                 disabled: true,
-                anchor: '30%'
+                allowBlank: false
             }, {
                 xtype: 'textarea',
-                fieldLabel: 'Keterangan',
-                name: 'bankNote',
-                id: 'bankNote',
+                fieldLabel: 'Message <font color="red">*</font>',
+                name: 'emailBody',
+                id: 'emailBody',
                 disabled: true,
-                anchor: '50% 10%'
+                anchor: '50% 50%',
+                allowBlank: false
             }
         ];
-        
-        this.tools = [{
-            type: 'help',
-            handler: function() {
-                // show help here
-            }
-        }];
         
         this.callParent(arguments);
     }

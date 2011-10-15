@@ -2,9 +2,9 @@ Ext.define('logbook.view.utility.form.UserProfileForm', {
     extend: 'Ext.form.Panel',
     alias: 'widget.userProfileForm',
     id: 'userProfileForm',
-    title: 'Registered User',
     bodyPadding: 5,
     width: 450,
+    border: false,
     
     fieldDefaults: {
         msgTarget: 'side',  // configuration for validation error msg.
@@ -37,6 +37,7 @@ Ext.define('logbook.view.utility.form.UserProfileForm', {
                 name: 'userName',
                 id: 'userName',
                 anchor: '100%',
+                disabled: true,
                 allowBlank: false
             }, {
                 xtype: 'textfield',
@@ -45,6 +46,7 @@ Ext.define('logbook.view.utility.form.UserProfileForm', {
                 name: 'password',
                 id: 'password',
                 anchor: '100%',
+                disabled: true,
                 allowBlank: false
             }, {
                 xtype: 'textfield',
@@ -52,6 +54,7 @@ Ext.define('logbook.view.utility.form.UserProfileForm', {
                 name: 'firstName',
                 id: 'firstName',
                 anchor: '100%',
+                disabled: true,
                 allowBlank: false
             }, {
                 xtype: 'textfield',
@@ -59,6 +62,7 @@ Ext.define('logbook.view.utility.form.UserProfileForm', {
                 name: 'lastName',
                 id: 'lastName',
                 anchor: '100%',
+                disabled: true,
                 allowBlank: false
             }, {
                 xtype: 'textfield',
@@ -67,6 +71,7 @@ Ext.define('logbook.view.utility.form.UserProfileForm', {
                 name: 'emailAddress',
                 id: 'emailAddress',
                 anchor: '100%',
+                disabled: true,
                 allowBlank: false
             }, {
                 xtype: 'textfield',
@@ -75,17 +80,10 @@ Ext.define('logbook.view.utility.form.UserProfileForm', {
                 name: 'passwordEmail',
                 id: 'passwordEmail',
                 anchor: '100%',
+                disabled: true,
                 allowBlank: false
             }
         ];
-        
-        this.buttons = [{
-            text: 'Cancel',
-            action: 'cancel_user_profile',
-        }, {
-            text: 'Save',
-            action: 'save_user_profile'
-        }];
         
         this.callParent(arguments);
     }

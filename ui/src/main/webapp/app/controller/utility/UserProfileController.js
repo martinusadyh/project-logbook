@@ -7,6 +7,20 @@ Ext.define('logbook.controller.utility.UserProfileController', {
     ],
     
     init: function() {
-        console.log('Init dashboard controller');
+        this.control({
+            'userProfilePanel button[action=edit]': {
+                click: this.edit
+            },
+            'userProfilePanel button[action=save]': {
+                click: this.save
+            }
+        });
+    },
+    
+    edit: function() {
+        console.log('Edit clicked');
+    },
+    save: function() {
+        console.log('save clicked');
     }
 });
