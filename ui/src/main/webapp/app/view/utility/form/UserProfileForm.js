@@ -86,5 +86,31 @@ Ext.define('logbook.view.utility.form.UserProfileForm', {
         ];
         
         this.callParent(arguments);
+    },
+    
+    enableDisableComponent: function(widgetId, isEnable) {
+        if (isEnable) {
+            Ext.getCmp(widgetId).enable(true);
+        } else {
+            Ext.getCmp(widgetId).disable(true);
+        }
+    },
+    
+    enableDisableForm: function(isEnable) {
+        if (isEnable) {
+            this.enableDisableComponent('userName', true);
+            this.enableDisableComponent('password', true);
+            this.enableDisableComponent('firstName', true);
+            this.enableDisableComponent('lastName', true);
+            this.enableDisableComponent('emailAddress', true);
+            this.enableDisableComponent('passwordEmail', true);
+        } else {
+            this.enableDisableComponent('userName', false);
+            this.enableDisableComponent('password', false);
+            this.enableDisableComponent('firstName', false);
+            this.enableDisableComponent('lastName', false);
+            this.enableDisableComponent('emailAddress', false);
+            this.enableDisableComponent('passwordEmail', false);
+        }
     }
 });

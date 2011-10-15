@@ -13,14 +13,22 @@ Ext.define('logbook.controller.utility.EmailTemplateController', {
             },
             'emailTemplatePanel button[action=save]': {
                 click: this.save
+            },
+            'emailTemplatePanel button[action=cancel]': {
+                click: this.cancel
             }
         });
     },
     
     edit: function() {
-        console.log('Edit clicked');
+        Ext.getCmp('emailTemplateForm').enableDisableForm(true);
+        Ext.getCmp('emailTemplatePanel').btnEditOnClick();
     },
     save: function() {
-        console.log('save clicked');
+        this.cancel();
+    },
+    cancel: function() {
+        Ext.getCmp('emailTemplateForm').enableDisableForm(false);
+        Ext.getCmp('emailTemplatePanel').btnSaveOnClick();
     }
 });

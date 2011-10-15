@@ -25,7 +25,14 @@ Ext.define('logbook.view.utility.UserProfilePanel', {
                     scope: this,
                     disabled: true,
                     text: 'Simpan'
-                }
+                }, {
+                    xtype: 'button',
+                    id: 'btnCancelUser',
+                    iconCls: 'icon-cancel',
+                    action: 'cancel',
+                    scope: this,
+                    text: 'Cancel'
+                }    
             ]
         };
         
@@ -35,5 +42,23 @@ Ext.define('logbook.view.utility.UserProfilePanel', {
         }];
         
         this.callParent(arguments);
+    },
+    
+    disableEnableButton: function(buttonId, disableStatus) {
+        if (disableStatus) {
+            Ext.getCmp(buttonId).disable(true);
+        } else {
+            Ext.getCmp(buttonId).enable(true);
+        }
+    },
+    
+    btnEditOnClick: function() {
+        this.disableEnableButton('btnEditUser', true);
+        this.disableEnableButton('btnSaveUser', false);
+    },
+    
+    btnSaveOnClick: function() {
+        this.disableEnableButton('btnEditUser', false);
+        this.disableEnableButton('btnSaveUser', true);
     }
 });

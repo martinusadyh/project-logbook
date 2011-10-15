@@ -25,7 +25,14 @@ Ext.define('logbook.view.utility.EmailTemplatePanel', {
                     scope: this,
                     disabled: true,
                     text: 'Simpan'
-                }
+                }, {
+                    xtype: 'button',
+                    id: 'btnCancelEmail',
+                    iconCls: 'icon-cancel',
+                    action: 'cancel',
+                    scope: this,
+                    text: 'Cancel'
+                } 
             ]
         };
         
@@ -35,5 +42,23 @@ Ext.define('logbook.view.utility.EmailTemplatePanel', {
         }];
         
         this.callParent(arguments);
+    },
+    
+    disableEnableButton: function(buttonId, disableStatus) {
+        if (disableStatus) {
+            Ext.getCmp(buttonId).disable(true);
+        } else {
+            Ext.getCmp(buttonId).enable(true);
+        }
+    },
+    
+    btnEditOnClick: function() {
+        this.disableEnableButton('btnEditEmail', true);
+        this.disableEnableButton('btnSaveEmail', false);
+    },
+    
+    btnSaveOnClick: function() {
+        this.disableEnableButton('btnEditEmail', false);
+        this.disableEnableButton('btnSaveEmail', true);
     }
 });

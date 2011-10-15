@@ -69,5 +69,27 @@ Ext.define('logbook.view.utility.form.EmailTemplateForm', {
         ];
         
         this.callParent(arguments);
+    },
+    
+    enableDisableComponent: function(widgetId, isEnable) {
+        if (isEnable) {
+            Ext.getCmp(widgetId).enable(true);
+        } else {
+            Ext.getCmp(widgetId).disable(true);
+        }
+    },
+    
+    enableDisableForm: function(isEnable) {
+        if (isEnable) {
+            this.enableDisableComponent('sendTo', true);
+            this.enableDisableComponent('carbonCopy', true);
+            this.enableDisableComponent('subject', true);
+            this.enableDisableComponent('emailBody', true);
+        } else {
+            this.enableDisableComponent('sendTo', false);
+            this.enableDisableComponent('carbonCopy', false);
+            this.enableDisableComponent('subject', false);
+            this.enableDisableComponent('emailBody', false);
+        }
     }
 });

@@ -13,14 +13,22 @@ Ext.define('logbook.controller.utility.UserProfileController', {
             },
             'userProfilePanel button[action=save]': {
                 click: this.save
+            },
+            'userProfilePanel button[action=cancel]': {
+                click: this.cancel
             }
         });
     },
     
     edit: function() {
-        console.log('Edit clicked');
+        Ext.getCmp('userProfileForm').enableDisableForm(true);
+        Ext.getCmp('userProfilePanel').btnEditOnClick();
     },
     save: function() {
-        console.log('save clicked');
+        this.cancel();
+    },
+    cancel: function() {
+        Ext.getCmp('userProfileForm').enableDisableForm(false);
+        Ext.getCmp('userProfilePanel').btnSaveOnClick();
     }
 });
