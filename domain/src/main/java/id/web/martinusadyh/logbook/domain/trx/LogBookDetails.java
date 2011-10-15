@@ -49,7 +49,7 @@ public class LogBookDetails extends BaseEntity {
     private String solution;
     
     @ManyToOne
-    private LookBookHeader lookBookHeader;
+    private LogBookHeader logBookHeader;
     
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     @Column(name="time_solved")
@@ -64,14 +64,6 @@ public class LogBookDetails extends BaseEntity {
     @ManyToOne
     private Module module;
 
-    public Module getModule() {
-        return module;
-    }
-
-    public void setModule(Module module) {
-        this.module = module;
-    }
-    
     public Category getCategory() {
         return category;
     }
@@ -88,12 +80,20 @@ public class LogBookDetails extends BaseEntity {
         this.fromUser = fromUser;
     }
 
-    public LookBookHeader getLookBookHeader() {
-        return lookBookHeader;
+    public LogBookHeader getLogBookHeader() {
+        return logBookHeader;
     }
 
-    public void setLookBookHeader(LookBookHeader lookBookHeader) {
-        this.lookBookHeader = lookBookHeader;
+    public void setLogBookHeader(LogBookHeader logBookHeader) {
+        this.logBookHeader = logBookHeader;
+    }
+
+    public Module getModule() {
+        return module;
+    }
+
+    public void setModule(Module module) {
+        this.module = module;
     }
 
     public String getProblem() {

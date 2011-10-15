@@ -15,7 +15,7 @@ import javax.persistence.Temporal;
  */
 @Entity
 @Table(name="logbook_header")
-public class LookBookHeader extends BaseEntity {
+public class LogBookHeader extends BaseEntity {
     
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     @Column(name="log_date")
