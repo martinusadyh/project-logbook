@@ -7,7 +7,7 @@ Ext.define('logbook.store.UserProfileStore', {
     proxy: {
         type: 'ajax',
         api: {
-            read: '/logbook/logbook/json/utility/userprofile/finduser'
+            read: '/logbook/ui/json/utility/userprofile/finduser'
         },
         
         reader: {

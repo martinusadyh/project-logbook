@@ -20,12 +20,12 @@
     </listener>
     
     <servlet>
-        <servlet-name>logbook</servlet-name>
+        <servlet-name>ui</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>logbook</servlet-name>
-        <url-pattern>/logbook/*</url-pattern>
+        <servlet-name>ui</servlet-name>
+        <url-pattern>/ui/*</url-pattern>
     </servlet-mapping>
     
     <session-config>

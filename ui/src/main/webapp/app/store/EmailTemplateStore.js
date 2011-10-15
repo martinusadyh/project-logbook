@@ -7,7 +7,7 @@ Ext.define('logbook.store.EmailTemplateStore', {
     proxy: {
         type: 'ajax',
         api: {
-            read: '/logbook/logbook/json/utility/emailtemplate/findtemplate'
+            read: '/logbook/ui/json/utility/emailtemplate/findtemplate'
         },
         
         reader: {
