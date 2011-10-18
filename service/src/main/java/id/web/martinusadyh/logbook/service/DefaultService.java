@@ -12,4 +12,7 @@ public interface DefaultService {
     
     public List<Category> findAllCategory(Integer first, Integer pageSize);
     public List<Module> findAllModule(Integer first, Integer pageSize);
+
+    public Long countCategoryTable();
+    public Long countModuleTable();
 }

@@ -36,5 +36,18 @@ public class DefaultServiceImpl implements DefaultService {
                 .setMaxResults(pageSize)
                 .list();
     }
-    
+
+    @Override
+    public Long countCategoryTable() {
+        return (Long) sessionFactory.getCurrentSession()
+                .createQuery("select count(*) from Category ct")
+                .uniqueResult();
+    }
+
+    @Override
+    public Long countModuleTable() {
+        return (Long) sessionFactory.getCurrentSession()
+                .createQuery("select count(*) from Module m")
+                .uniqueResult();
+    }
 }
