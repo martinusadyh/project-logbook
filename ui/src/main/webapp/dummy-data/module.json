@@ -1,0 +1,19 @@
+{
+    "totalCount":3,
+    "items":[{
+        "id":1,
+        "createdDate":"08/09/2012 20:26:07",
+        "lastUpdateDate":"08/09/2012 20:26:07",
+        "moduleName":"module1"
+    },{
+        "id":2,
+        "createdDate":"08/09/2012 20:26:07",
+        "lastUpdateDate":"08/09/2012 20:26:07",
+        "moduleName":"module2"
+    },{
+        "id":3,
+        "createdDate":"08/09/2012 20:26:07",
+        "lastUpdateDate":"08/09/2012 20:26:07",
+        "moduleName":"module3"
+    }]
+}

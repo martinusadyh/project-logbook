@@ -1,0 +1,24 @@
+{
+    "totalCount":2,
+    "items":[{
+        "id":1,
+        "createdDate":"08/09/2012 20:26:07",
+        "lastUpdateDate":"08/09/2012 20:26:07",
+        "userName":"joko",
+        "firstName":"joko",
+        "lastName":"kondo-kondo",
+        "emailAddress":"joko@kondo.com",
+        "passwordEmail":"123okoj",
+        "password":"jokoajah"
+    },{
+        "id":2,
+        "createdDate":"08/09/2012 20:26:07",
+        "lastUpdateDate":"08/09/2012 20:26:07",
+        "userName":"joko2",
+        "firstName":"joko2",
+        "lastName":"kondo-kondo2",
+        "emailAddress":"joko@kondo.com",
+        "passwordEmail":"123okoj2",
+        "password":"jokoajah2"
+    }]
+}
