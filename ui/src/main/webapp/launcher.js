@@ -4,6 +4,7 @@ Ext.application({
     
     controllers: [
         'main.DashboardController',
+        'entri.EntriLogBookController',
         'utility.EmailTemplateController',
         'utility.UserProfileController'
     ],

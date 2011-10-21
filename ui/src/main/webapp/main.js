@@ -3,7 +3,7 @@ Ext.application({
     appFolder: 'app',
     
     controllers: [
-        'Login'
+        'auth.LoginController'
     ],
     
     launch: function() {

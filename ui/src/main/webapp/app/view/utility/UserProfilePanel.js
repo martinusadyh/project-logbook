@@ -1,5 +1,5 @@
 Ext.define('logbook.view.utility.UserProfilePanel', {
-    extend: 'Ext.form.Panel',
+    extend: 'Ext.panel.Panel',
     alias: 'widget.userProfilePanel',
     id: 'userProfilePanel',
     title: 'User Profile',

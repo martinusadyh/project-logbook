@@ -7,7 +7,10 @@ Ext.define('logbook.store.UserProfileStore', {
     proxy: {
         type: 'ajax',
         api: {
-            read: '/logbook/ui/json/utility/userprofile/finduser'
+            //create: '/logbook/ui/json/utility/userprofile/save',
+            read: '/logbook/ui/json/utility/userprofile/list'
+            //create: 'dummy-data/save-data.json',
+            //read: 'dummy-data/user.json'
         },
         
         reader: {
@@ -21,7 +24,7 @@ Ext.define('logbook.store.UserProfileStore', {
             exception: function(proxy, response, operation){
                 Ext.MessageBox.show({
                     title: 'REMOTE EXCEPTION',
-                    msg: operation.getError(),
+                    msg: response,//operation.getError(),
                     icon: Ext.MessageBox.ERROR,
                     buttons: Ext.Msg.OK
                 });

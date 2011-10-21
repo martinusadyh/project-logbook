@@ -4,7 +4,7 @@
     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
     id="WebApp_ID" version="2.5">
     
-    <display-name>id.web.martinusadyh.bpr.ui.web</display-name>
+    <display-name>logbook</display-name>
     
     <context-param>
         <description>Lokasi konfigurasi Spring dan Hibernate</description>

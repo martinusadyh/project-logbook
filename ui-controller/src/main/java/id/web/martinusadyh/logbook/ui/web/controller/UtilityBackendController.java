@@ -3,15 +3,19 @@ package id.web.martinusadyh.logbook.ui.web.controller;
 import id.web.martinusadyh.logbook.domain.utility.EmailTemplate;
 import id.web.martinusadyh.logbook.domain.utility.UserProfile;
 import id.web.martinusadyh.logbook.service.UtilityService;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 /**
  *
@@ -46,12 +50,40 @@ public class UtilityBackendController {
         return jsonData;
     }
     
-    @RequestMapping(value="/json/utility/emailtemplate/findtemplate", method=RequestMethod.GET)
-    public @ResponseBody Map<String, Object> getCurrentEmailTemplate(
-            @RequestParam(value="id", required=true) Integer id) {
+    @RequestMapping(value="/json/utility/userprofile/list", method=RequestMethod.GET)
+    public @ResponseBody Map<String, Object> getAllUser(
+            @RequestParam(value="start", required=true) Integer first,
+            @RequestParam(value="limit", required=true) Integer pageSize) {
         
         final Map<String, Object> jsonData = new HashMap<String, Object>();
-        final EmailTemplate obj = utilityService.getCurrentEmailTemplate(id);
+        final Long totalRows = utilityService.countUserTable();
+        final List<UserProfile> obj = utilityService.findAllUser(first, pageSize);
+        List<Map<String, Object>> items = new ArrayList<Map<String, Object>>();
+        
+        for (UserProfile up : obj) {
+            Map<String, Object> row = new HashMap<String, Object>();
+            row.put("id", up.getId());
+            row.put("createdDate", up.getCreatedDate());
+            row.put("lastUpdateDate", up.getLastUpdateDate());
+            row.put("userName", up.getUserName());
+            row.put("firstName", up.getFirstName());
+            row.put("lastName", up.getLastName());
+            row.put("emailAddress", up.getEmailAddress());
+
+            items.add(row);
+        }
+
+        jsonData.put("items", items);
+        jsonData.put("totalCount", totalRows.intValue());
+        
+        return jsonData;
+    }
+    
+    @RequestMapping(value="/json/utility/emailtemplate/findtemplate", method=RequestMethod.GET)
+    public @ResponseBody Map<String, Object> getCurrentEmailTemplate() {
+        
+        final Map<String, Object> jsonData = new HashMap<String, Object>();
+        final EmailTemplate obj = utilityService.getCurrentEmailTemplate(1);
         if (obj != null) {
             jsonData.put("id", obj.getId());
             jsonData.put("createdDate", obj.getCreatedDate());
@@ -77,7 +109,7 @@ public class UtilityBackendController {
             utilityService.saveUserProfile(obj);
             
             jsonData.put("success", Boolean.TRUE);
-            jsonData.put("msg", "Record has been saved !");
+            jsonData.put("msg", "User has been registered, now you can login with your account !");
         } catch (Exception e) {
             String msgErr = "";
             if (e.getCause() == null) {

@@ -41,15 +41,6 @@ Ext.define('logbook.view.utility.form.UserProfileForm', {
                 allowBlank: false
             }, {
                 xtype: 'textfield',
-                fieldLabel: 'Password <font color="red">*</font>',
-                inputType: 'password',
-                name: 'password',
-                id: 'password',
-                anchor: '100%',
-                disabled: true,
-                allowBlank: false
-            }, {
-                xtype: 'textfield',
                 fieldLabel: 'First Name <font color="red">*</font>',
                 name: 'firstName',
                 id: 'firstName',
@@ -79,6 +70,15 @@ Ext.define('logbook.view.utility.form.UserProfileForm', {
                 inputType: 'password',
                 name: 'passwordEmail',
                 id: 'passwordEmail',
+                anchor: '100%',
+                disabled: true,
+                allowBlank: false
+            }, {
+                xtype: 'textfield',
+                fieldLabel: 'Password <font color="red">*</font>',
+                inputType: 'password',
+                name: 'password',
+                id: 'password',
                 anchor: '100%',
                 disabled: true,
                 allowBlank: false

@@ -9,3 +9,11 @@
 .icon-cancel {
     background-image: url(../images/cancel.png);
 }
+
+.icon-delete {
+    background-image: url(../images/delete.png);
+}
+
+.icon-email {
+    background-image: url(../images/mail.gif);
+}

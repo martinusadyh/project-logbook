@@ -11,6 +11,7 @@
     
     <artifactId>impl</artifactId>
     <name>impl</name>
+    
     <dependencies>
         <!-- Dependencies ke modul internal -->
         <dependency>
@@ -22,6 +23,18 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>service</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>datasource</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>jpa</artifactId>
             <version>${project.version}</version>
         </dependency>
         

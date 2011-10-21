@@ -4,6 +4,7 @@ import id.web.martinusadyh.logbook.domain.utility.EmailTemplate;
 import id.web.martinusadyh.logbook.domain.utility.UserProfile;
 import id.web.martinusadyh.logbook.service.UtilityService;
 import java.util.Date;
+import java.util.List;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,6 +37,7 @@ public class UtilityServiceImpl implements UtilityService {
     }
 
     @Override
+    @Transactional(readOnly=false)
     public void saveUserProfile(UserProfile userProfile) {
         if (userProfile.getId() != null) {
             userProfile.setLastUpdateDate(new Date());
@@ -50,5 +52,20 @@ public class UtilityServiceImpl implements UtilityService {
                 .setParameter("idUser", id)
                 .uniqueResult();
     }
-    
+
+    @Override
+    public Long countUserTable() {
+        return (Long) sessionFactory.getCurrentSession()
+                .createQuery("select count(*) from UserProfile up")
+                .uniqueResult();
+    }
+
+    @Override
+    public List<UserProfile> findAllUser(Integer first, Integer pageSize) {
+        return sessionFactory.getCurrentSession()
+                .createQuery("from UserProfile up")
+                .setFirstResult(first)
+                .setMaxResults(pageSize)
+                .list();
+    }
 }
