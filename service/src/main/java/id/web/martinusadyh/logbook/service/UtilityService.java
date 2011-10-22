@@ -1,7 +1,7 @@
 package id.web.martinusadyh.logbook.service;
 
 import id.web.martinusadyh.logbook.domain.utility.EmailTemplate;
-import id.web.martinusadyh.logbook.domain.utility.UserProfile;
+import id.web.martinusadyh.logbook.domain.security.UserProfile;
 import java.util.List;
 
 /**

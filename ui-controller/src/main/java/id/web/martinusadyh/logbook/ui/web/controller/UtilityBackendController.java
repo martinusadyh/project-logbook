@@ -1,7 +1,7 @@
 package id.web.martinusadyh.logbook.ui.web.controller;
 
 import id.web.martinusadyh.logbook.domain.utility.EmailTemplate;
-import id.web.martinusadyh.logbook.domain.utility.UserProfile;
+import id.web.martinusadyh.logbook.domain.security.UserProfile;
 import id.web.martinusadyh.logbook.service.UtilityService;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ModelAttribute;
