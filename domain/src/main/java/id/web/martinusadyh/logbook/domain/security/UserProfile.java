@@ -5,8 +5,13 @@ import id.web.martinusadyh.logbook.domain.trx.LogBookDetails;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 /**
  *
@@ -33,12 +38,25 @@ public class UserProfile extends BaseEntity {
     
     @Column(name="password")
     private String password;
+    
+    @ManyToOne(fetch=FetchType.EAGER)
+    @Fetch(FetchMode.JOIN)
+    @JoinColumn(name="id_role", nullable=false)
+    private Role role;
 
     @OneToMany(mappedBy = "solvedBy")
     private List<LogBookDetails> logBooksSolvedBy;
     
     @OneToMany(mappedBy = "receivedBy")
     private List<LogBookDetails> logBooksReceivedBy;
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
 
     public String getEmailAddress() {
         return emailAddress;

@@ -14,6 +14,10 @@
         <mapping class="id.web.martinusadyh.logbook.domain.trx.LogBookDetails" />
         
         <mapping class="id.web.martinusadyh.logbook.domain.utility.EmailTemplate" />
-        <mapping class="id.web.martinusadyh.logbook.domain.utility.UserProfile" />
+        
+        <!-- security -->
+        <mapping class="id.web.martinusadyh.logbook.domain.security.UserProfile" />
+        <mapping class="id.web.martinusadyh.logbook.domain.security.Role" />
+        <mapping class="id.web.martinusadyh.logbook.domain.security.Permission" />
     </session-factory>
 </hibernate-configuration>
