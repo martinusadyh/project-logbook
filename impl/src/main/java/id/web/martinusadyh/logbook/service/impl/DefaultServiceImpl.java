@@ -50,4 +50,16 @@ public class DefaultServiceImpl implements DefaultService {
                 .createQuery("select count(*) from Module m")
                 .uniqueResult();
     }
+
+    @Override
+    @Transactional(readOnly=false)
+    public void save(Category category) {
+        sessionFactory.getCurrentSession().saveOrUpdate(category);
+    }
+
+    @Override
+    @Transactional(readOnly=false)
+    public void save(Module module) {
+        sessionFactory.getCurrentSession().saveOrUpdate(module);
+    }
 }

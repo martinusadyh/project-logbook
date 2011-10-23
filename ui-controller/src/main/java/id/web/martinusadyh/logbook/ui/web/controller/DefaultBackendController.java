@@ -23,6 +23,26 @@ public class DefaultBackendController {
     
     @Autowired private DefaultService defaultService;
     
+    @RequestMapping(value="/json/default-page", method=RequestMethod.GET)
+    public @ResponseBody Map<String, Object> defaultPage() {
+        final Map<String, Object> jsonData = new HashMap<String, Object>();
+        
+        jsonData.put("success", Boolean.TRUE);
+        jsonData.put("msg", "launcher.html");
+        
+        return jsonData;
+    }
+    
+    @RequestMapping(value="/json/access-denied", method=RequestMethod.GET)
+    public @ResponseBody Map<String, Object> accessDeniedHandler() {
+        final Map<String, Object> jsonData = new HashMap<String, Object>();
+        
+        jsonData.put("success", Boolean.FALSE);
+        jsonData.put("msg", "Access Denied");
+        
+        return jsonData;
+    }
+    
     @RequestMapping(value="/json/default/category/list", method=RequestMethod.GET)
     public @ResponseBody Map<String, Object> getAllCategory(
             @RequestParam(value="start", required=true) Integer start,
@@ -64,7 +84,7 @@ public class DefaultBackendController {
             row.put("id", mdl.getId());
             row.put("createdDate", mdl.getCreatedDate());
             row.put("lastUpdateDate", mdl.getLastUpdateDate());
-            row.put("categoryName", mdl.getModuleName());
+            row.put("moduleName", mdl.getModuleName());
             
             items.add(row);
         }

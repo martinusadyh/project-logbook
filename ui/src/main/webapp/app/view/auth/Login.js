@@ -1,6 +1,7 @@
 Ext.define('logbook.view.auth.Login', {
     extend: 'Ext.form.Panel',
     alias: 'widget.loginForm',
+    id: 'loginForm',
     frame: true, 
     height: 130,
     width: 300,
@@ -21,13 +22,15 @@ Ext.define('logbook.view.auth.Login', {
             }, {
                 xtype: 'textfield',
                 fieldLabel: 'Username <font color="red">*</font>',
-                name: 'username',
+                name: 'j_username',
+                id: 'j_username',
                 allowBlank: 'false'
             }, {
                 xtype: 'textfield',
                 fieldLabel: 'Password <font color="red">*</font>',
                 inputType: 'password',
-                name: 'password'
+                name: 'j_password',
+                id: 'j_password'
             }
         ];
         

@@ -15,4 +15,8 @@ public interface DefaultService {
 
     public Long countCategoryTable();
     public Long countModuleTable();
+
+    public void save(Category category);
+
+    public void save(Module module);
 }

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+  xmlns:beans="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/security
+           http://www.springframework.org/schema/security/spring-security-3.0.3.xsd">
+
+    <http use-expressions="true">
+        <intercept-url pattern="/css" access="permitAll" />
+        <intercept-url pattern="/extjs" access="permitAll" />
+        <intercept-url pattern="/images" access="permitAll" />
+        <intercept-url pattern="/lib" access="permitAll" />
+        <intercept-url pattern="/login.html" access="permitAll" />
+        <intercept-url pattern="/main.js" access="permitAll" />
+        <intercept-url pattern="/ui/**" access="permitAll"/>
+        <intercept-url pattern="/launcher.html" access="hasRole('ROLE_USER_PAGE')"/>
+        <intercept-url pattern="/launcher.js" access="hasRole('ROLE_USER_PAGE')"/>
+        <form-login login-page="/login.html" default-target-url="/ui/json/default-page" />
+        
+        <logout invalidate-session="true" />
+        <!-- <access-denied-handler ref="accessDeniedHandler" /> -->
+    </http>
+    <!--
+    <beans:bean id="exceptionTranslationFilter"
+        class="org.springframework.security.web.access.ExceptionTranslationFilter">
+        <beans:property name="authenticationEntryPoint" ref="authenticationEntryPoint"/>
+        <beans:property name="accessDeniedHandler" ref="accessDeniedHandler"/>
+    </beans:bean>
+    
+    <beans:bean id="authenticationEntryPoint" 
+        class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
+        <beans:property name="loginFormUrl" value="/login.html"/>
+    </beans:bean>
+    
+    <beans:bean id="accessDeniedHandler"
+        class="org.springframework.security.web.access.AccessDeniedHandlerImpl">
+        <beans:property name="errorPage" value="/ui/json/access-denied"/>
+    </beans:bean>
+    -->
+    <authentication-manager>
+        <authentication-provider user-service-ref='myUserDetailsService'>
+            <password-encoder hash="md5" />
+        </authentication-provider>
+    </authentication-manager>
+
+    <beans:bean id="myUserDetailsService" class="org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl">
+        <beans:property name="dataSource" ref="dataSource"/>
+        
+        <beans:property name="usersByUsernameQuery"
+                        value="select username, password,
+                        'true' as enabled from user_profile where username=?"/>
+        
+        <beans:property name="authoritiesByUsernameQuery"
+                        value="SELECT user_profile.username, permission.name FROM role
+                        INNER JOIN role_permission ON role.id = role_permission.id_role
+                        INNER JOIN user_profile ON role.id = user_profile.id_role INNER JOIN permission ON role_permission.id_permission = permission.id where
+                        user_profile.username = ?"/>
+                        
+        <beans:property name="rolePrefix" value="ROLE_"/>
+    </beans:bean>
+</beans:beans>

@@ -2,7 +2,9 @@ package id.web.martinusadyh.logbook.ui.web.controller;
 
 import id.web.martinusadyh.logbook.domain.utility.EmailTemplate;
 import id.web.martinusadyh.logbook.domain.security.UserProfile;
+import id.web.martinusadyh.logbook.domain.security.Role;
 import id.web.martinusadyh.logbook.service.UtilityService;
+import id.web.martinusadyh.logbook.service.SecurityService;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -24,6 +26,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 public class UtilityBackendController {
     
     @Autowired private UtilityService utilityService;
+    @Autowired private SecurityService securityService;
+    
+    private final String DEFAULT_ROLE = "USER";
     
     @RequestMapping(value="/json/utility/userprofile/finduser", method=RequestMethod.GET)
     public @ResponseBody Map<String, Object> getCurrentUserByID(
@@ -105,6 +110,10 @@ public class UtilityBackendController {
         final Map<String, Object> jsonData = new HashMap<String, Object>();
         
         try {
+            // find role first
+            Role resultRole = securityService.findRoleByName(DEFAULT_ROLE);
+            obj.setRole(resultRole);
+            
             utilityService.saveUserProfile(obj);
             
             jsonData.put("success", Boolean.TRUE);

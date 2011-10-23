@@ -19,10 +19,6 @@ Ext.define('logbook.view.main.ToolbarPanel', {
                         items: [
                             {
                                 xtype: 'menuitem',
-                                text: 'Login',
-                                action: 'login'
-                            }, {
-                                xtype: 'menuitem',
                                 text: 'Logout',
                                 action: 'logout'
                             }
