@@ -20,12 +20,6 @@ Ext.define('logbook.view.main.BottomPanel', {
                     xtype: 'tbseparator'
                 }, {
                     xtype: 'tbtext',
-                    id: 'bottomPanelRole',
-                    text: 'Administrator Penyelenggara'
-                }, {
-                    xtype: 'tbseparator'
-                }, {
-                    xtype: 'tbtext',
                     id: 'bottomPanelSystemDate',
                     text: '20-10-2011'
                 }

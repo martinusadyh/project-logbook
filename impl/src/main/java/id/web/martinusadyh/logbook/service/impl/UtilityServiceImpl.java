@@ -68,4 +68,12 @@ public class UtilityServiceImpl implements UtilityService {
                 .setMaxResults(pageSize)
                 .list();
     }
+
+    @Override
+    public UserProfile findUserByName(String userName) {
+        return (UserProfile) sessionFactory.getCurrentSession()
+                .createQuery("from UserProfile up where up.userName = :username")
+                .setParameter("username", userName)
+                .uniqueResult();
+    }
 }

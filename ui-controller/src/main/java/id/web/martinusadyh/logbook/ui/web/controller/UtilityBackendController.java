@@ -5,10 +5,14 @@ import id.web.martinusadyh.logbook.domain.security.UserProfile;
 import id.web.martinusadyh.logbook.domain.security.Role;
 import id.web.martinusadyh.logbook.service.UtilityService;
 import id.web.martinusadyh.logbook.service.SecurityService;
+import id.web.martinusadyh.logbook.ui.web.controller.helper.SpringSecurityHelper;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,7 +32,25 @@ public class UtilityBackendController {
     @Autowired private UtilityService utilityService;
     @Autowired private SecurityService securityService;
     
+    private final SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
     private final String DEFAULT_ROLE = "USER";
+    
+    @RequestMapping(value="/json/utility/userprofile/current-username", method=RequestMethod.GET)
+    public @ResponseBody Map<String, Object> getCurrentUsername() {
+        final Map<String, Object> jsonData = new HashMap<String, Object>();
+        final String userName = SpringSecurityHelper.getCurrentUsername();
+        
+        final UserProfile obj = utilityService.findUserByName(userName);
+        if (obj != null) {
+            jsonData.put("id", obj.getId());
+            jsonData.put("createdDate", obj.getCreatedDate());
+            jsonData.put("lastUpdateDate", obj.getLastUpdateDate());
+            jsonData.put("userName", obj.getUserName());
+            jsonData.put("currentDate", dateFormat.format(new Date()));
+        }
+        
+        return jsonData;
+    }
     
     @RequestMapping(value="/json/utility/userprofile/finduser", method=RequestMethod.GET)
     public @ResponseBody Map<String, Object> getCurrentUserByID(
@@ -46,9 +68,6 @@ public class UtilityBackendController {
             jsonData.put("lastName", obj.getLastName());
             jsonData.put("emailAddress", obj.getEmailAddress());
             jsonData.put("passwordEmail", obj.getPasswordEmail());
-        } else {
-            jsonData.put("success", Boolean.FALSE);
-            jsonData.put("msg", "Data not found !");
         }
         
         return jsonData;
@@ -96,9 +115,6 @@ public class UtilityBackendController {
             jsonData.put("carbonCopy", obj.getCarbonCopy());
             jsonData.put("subject", obj.getSubject());
             jsonData.put("emailBody", obj.getEmailBody());
-        } else {
-            jsonData.put("success", Boolean.FALSE);
-            jsonData.put("msg", "Data not found !");
         }
         
         return jsonData;

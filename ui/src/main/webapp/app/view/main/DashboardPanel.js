@@ -9,9 +9,6 @@ Ext.define('logbook.view.main.DashboardPanel', {
         this.items = [{
             xtype: 'toolBarPanel',
             region: 'north'
-        /*}, {
-            xtype: 'accordionPanel',
-            region: 'west'*/
         }, {
             xtype: 'centerPanel',
             region: 'center'

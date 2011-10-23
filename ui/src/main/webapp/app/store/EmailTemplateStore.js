@@ -7,7 +7,7 @@ Ext.define('logbook.store.EmailTemplateStore', {
     proxy: {
         type: 'ajax',
         api: {
-            save: '/logbook/ui/json/utility/emailtemplate/save',
+            //save: '/logbook/ui/json/utility/emailtemplate/save',
             read: '/logbook/ui/json/utility/emailtemplate/findtemplate'
         },
         
@@ -22,6 +22,7 @@ Ext.define('logbook.store.EmailTemplateStore', {
             exception: function(proxy, response, operation){
                 console.log("getError() -> " + operation.getError());
                 console.log("statusText -> " + response.statusText);
+                console.log("response -> " + response);
                 Ext.MessageBox.show({
                     title: 'REMOTE EXCEPTION',
                     msg: response,//operation.getError(),

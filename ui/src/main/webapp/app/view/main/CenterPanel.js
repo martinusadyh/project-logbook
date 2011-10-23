@@ -10,7 +10,11 @@ Ext.define('logbook.view.main.CenterPanel', {
             {
                 xtype: 'tabpanel',
                 id: 'tabPanel',
-                bodyStyle: 'background: url(images/Home.png) center no-repeat;',
+                //bodyStyle: 'background: url(images/Home.png) center no-repeat;',
+                items: [{
+                    xtype: 'entriLogBookPanel',
+                    closable: true
+                }],
                 autoScroll: true
             }
         ];

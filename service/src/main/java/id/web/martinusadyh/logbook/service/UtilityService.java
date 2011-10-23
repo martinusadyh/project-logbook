@@ -18,4 +18,6 @@ public interface UtilityService {
 
     public Long countUserTable();
     public List<UserProfile> findAllUser(Integer first, Integer pageSize);
+
+    public UserProfile findUserByName(String userName);
 }

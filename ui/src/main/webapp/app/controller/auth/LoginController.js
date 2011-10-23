@@ -13,7 +13,6 @@ Ext.define('logbook.controller.auth.LoginController', {
     ],
     
     init: function() {
-        console.log('Init login controller');
         this.control({
             'loginForm button[action=register]': {
                 click: this.register

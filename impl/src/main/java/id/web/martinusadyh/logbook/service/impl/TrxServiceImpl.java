@@ -6,12 +6,14 @@ import java.util.List;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
  * @author martinus
  */
 @Service("trxService")
+@Transactional(readOnly=true)
 public class TrxServiceImpl implements TrxService {
     
     @Autowired private SessionFactory sessionFactory;
@@ -28,7 +30,7 @@ public class TrxServiceImpl implements TrxService {
     @Override
     public Long countLogBookHeader() {
         return (Long) sessionFactory.getCurrentSession()
-                .createQuery("select count(*) from LogBookHeader lh")
+                .createQuery("select count(lh.id) from LogBookHeader lh")
                 .uniqueResult();
     }
 }

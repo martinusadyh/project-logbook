@@ -13,7 +13,6 @@ Ext.define('logbook.controller.main.DashboardController', {
     ],
     
     init: function() {
-        console.log('Init dashboard controller');
         this.control({
             'toolBarPanel menuitem[action=logout]': {
                 click: this.logout
