@@ -3,7 +3,7 @@ package id.web.martinusadyh.logbook.domain.trx;
 import id.web.martinusadyh.logbook.domain.Category;
 import id.web.martinusadyh.logbook.domain.BaseEntity;
 import id.web.martinusadyh.logbook.domain.Module;
-import id.web.martinusadyh.logbook.domain.utility.UserProfile;
+import id.web.martinusadyh.logbook.domain.security.UserProfile;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;

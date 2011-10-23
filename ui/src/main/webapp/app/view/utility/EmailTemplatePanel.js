@@ -1,5 +1,5 @@
 Ext.define('logbook.view.utility.EmailTemplatePanel', {
-    extend: 'Ext.form.Panel',
+    extend: 'Ext.panel.Panel',
     alias: 'widget.emailTemplatePanel',
     id: 'emailTemplatePanel',
     title: 'Email Template',

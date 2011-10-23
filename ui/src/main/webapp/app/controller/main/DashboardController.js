@@ -6,6 +6,8 @@ Ext.define('logbook.controller.main.DashboardController', {
         'main.ToolbarPanel',
         'main.CenterPanel',
         'main.BottomPanel',
+        'entri.EntriLogBookPanel',
+        'entri.form.TableLogBook',
         'utility.EmailTemplatePanel',
         'utility.UserProfilePanel'
     ],
@@ -13,8 +15,8 @@ Ext.define('logbook.controller.main.DashboardController', {
     init: function() {
         console.log('Init dashboard controller');
         this.control({
-            'toolBarPanel menuitem[action=login]': {
-                click: this.login
+            'toolBarPanel menuitem[action=logout]': {
+                click: this.logout
             },
             
             // entri logbook menu
@@ -36,14 +38,13 @@ Ext.define('logbook.controller.main.DashboardController', {
         Ext.getCmp('centerPanel').showForm(screenId);
     },
     
-    login: function(menuitem) {
-        console.log('login button clicked');
+    logout: function(menuitem) {
+        window.location = 'j_spring_security_logout';
     },
     
     // entri logbook menu
     entri_logbook: function(menuitem) {
-        console.log('entri logbook clicked');
-        //this.addPanel('logbookPanel');
+        this.addPanel('entriLogBookPanel');
     },
     
     // utility menu

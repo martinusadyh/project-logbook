@@ -18,7 +18,7 @@ Ext.define('logbook.view.entri.form.DetailLogBookForm', {
     initComponent: function() {
         this.items = [{
             xtype: 'timefield',
-            fieldLabel: 'Reporting Time <font color="red">*</font>',
+            fieldLabel: 'Time Reporting <font color="red">*</font>',
             format: 'H:i',
             name: 'timeReporting',
             id: 'timeReporting',

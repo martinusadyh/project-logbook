@@ -7,8 +7,8 @@ Ext.define('logbook.store.ModuleStore', {
     proxy: {
         type: 'ajax',
         api: {
-            //read: '/logbook/ui/json/default/module/list'
-            read: 'dummy-data/module.json'
+            read: '/logbook/ui/json/default/module/list'
+            //read: 'dummy-data/module.json'
         },
         
         reader: {
@@ -20,6 +20,8 @@ Ext.define('logbook.store.ModuleStore', {
         
         listeners: {
             exception: function(proxy, response, operation){
+                console.log("getError() -> " + operation.getError());
+                console.log("statusText -> " + response.statusText);
                 Ext.MessageBox.show({
                     title: 'REMOTE EXCEPTION',
                     msg: response,//operation.getError(),

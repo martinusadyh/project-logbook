@@ -1,14 +1,23 @@
-Ext.define('logbook.controller.utility.EmailTemplateController', {
+Ext.define('logbook.controller.entri.EntriLogBookController', {
     extend: 'Ext.app.Controller',
     stores: [
-        'EmailTemplateStore'
+        'LogBookStore',
+        'UserProfileStore',
+        'CategoryStore',
+        'ModuleStore'
     ],
     models: [
-        'EmailTemplateModel'
+        'LogBookModel',
+        'UserProfileModel',
+        'CategoryModel',
+        'ModuleModel'
     ],
     views: [
-        'utility.EmailTemplatePanel',
-        'utility.form.EmailTemplateForm'
+        'entri.EntriLogBookPanel',
+        'entri.MainLogBookPanel',
+        'entri.form.TableLogBook',
+        'entri.form.DetailLogBookForm',
+        'entri.form.TableDetailLogBook'
     ],
     
     init: function() {
@@ -21,6 +30,12 @@ Ext.define('logbook.controller.utility.EmailTemplateController', {
             },
             'emailTemplatePanel button[action=cancel]': {
                 click: this.cancel
+            },
+            'entriLogBookPanel button[action=save_detail_logbook]': {
+                click: this.save_detail_logbook
+            }, 
+            'entriLogBookPanel button[action=delete_detail_logbook]': {
+                click: this.delete_detail_logbook
             }
         });
     },
@@ -39,5 +54,11 @@ Ext.define('logbook.controller.utility.EmailTemplateController', {
     cancel: function() {
         Ext.getCmp('emailTemplateForm').enableDisableForm(false);
         Ext.getCmp('emailTemplatePanel').btnSaveOnClick();
+    },
+    save_detail_logbook: function() {
+        console.log('save_detail_logbook clicked');
+    }, 
+    delete_detail_logbook: function() {
+        console.log('delete_detail_logbook clicked');
     }
 });

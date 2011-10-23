@@ -19,7 +19,9 @@ Ext.define('logbook.store.LogBookStore', {
         },
         
         listeners: {
-            exception: function(proxy, response, operation){
+            exception: function(proxy, response, operation) {
+                console.log("getError() -> " + operation.getError());
+                console.log("statusText -> " + response.statusText);
                 Ext.MessageBox.show({
                     title: 'REMOTE EXCEPTION',
                     msg: response,//operation.getError(),
