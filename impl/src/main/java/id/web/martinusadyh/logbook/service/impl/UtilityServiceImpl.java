@@ -21,6 +21,7 @@ public class UtilityServiceImpl implements UtilityService {
     @Autowired private SessionFactory sessionFactory;
 
     @Override
+    @Transactional(readOnly=false)
     public void saveEmailTemplate(EmailTemplate emailTemplate) {
         if (emailTemplate.getId() != null) {
             emailTemplate.setLastUpdateDate(new Date());

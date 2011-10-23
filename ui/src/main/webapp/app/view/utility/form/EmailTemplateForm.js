@@ -5,8 +5,6 @@ Ext.define('logbook.view.utility.form.EmailTemplateForm', {
     border: false,
     bodyPadding: 5,
     autoScroll: true,
-    width: '30%',
-    height: '70%',
     
     fieldDefaults: {
         msgTarget: 'side',  // configuration for validation error msg.
@@ -69,8 +67,30 @@ Ext.define('logbook.view.utility.form.EmailTemplateForm', {
         ];
         
         this.callParent(arguments);
+        this.activated_tab_handler();
     },
-    
+    activated_tab_handler: function() {
+        Ext.Ajax.request({
+            url: '/logbook/ui/json/utility/emailtemplate/findtemplate',
+            //url: 'dummy-data/null-result.json',
+            method: 'GET',
+            success: function(result, request) {
+                var text = Ext.JSON.decode(result.responseText);
+                if (text.totalData == 1) {
+                    Ext.getCmp('id').setValue(text.id);
+                    Ext.getCmp('createdDate').setValue(text.createdDate);
+                    Ext.getCmp('lastUpdateDate').setValue(text.lastUpdateDate);
+                    Ext.getCmp('sendTo').setValue(text.sendTo);
+                    Ext.getCmp('carbonCopy').setValue(text.carbonCopy);
+                    Ext.getCmp('subject').setValue(text.subject);
+                    Ext.getCmp('emailBody').setValue(text.emailBody);
+                } else {
+                    Ext.getCmp('emailTemplateForm').enableDisableForm(true);
+                    Ext.getCmp('emailTemplatePanel').btnEditOnClick();
+                }
+            }
+        });
+    },
     enableDisableComponent: function(widgetId, isEnable) {
         if (isEnable) {
             Ext.getCmp(widgetId).enable(true);

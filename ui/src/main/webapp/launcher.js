@@ -24,7 +24,7 @@ Ext.application({
             method: 'GET',
             success: function(result, request) {
                 var text = Ext.JSON.decode(result.responseText);
-                console.log('response ' + text.userName + ' ' + text.currentDate);
+                Ext.getCmp('idUser').setValue(text.id);
                 Ext.getCmp('bottomPanelUsername').setText(text.userName);
                 Ext.getCmp('bottomPanelSystemDate').setText(text.currentDate);
             }

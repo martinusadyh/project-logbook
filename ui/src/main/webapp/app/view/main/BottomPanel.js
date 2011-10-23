@@ -11,6 +11,10 @@ Ext.define('logbook.view.main.BottomPanel', {
             xtype: 'toolbar',
             items: [
                 {
+                    xtype: 'hiddenfield',
+                    name: 'idUser',
+                    id: 'idUser'
+                }, {
                     xtype: 'tbfill'
                 }, {
                     xtype: 'tbtext',

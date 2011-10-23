@@ -31,10 +31,35 @@ Ext.define('logbook.controller.utility.EmailTemplateController', {
     },
     save: function() {
         if (Ext.getCmp('emailTemplateForm').getForm().isValid()) {
-            this.getEmailTemplateStoreStore().sync();
+            Ext.getCmp('emailTemplateForm').getForm().submit({
+                waitMsg : 'Inserting new record ...',
+                method  : 'POST',
+                url     : '/logbook/ui/json/utility/emailtemplate/save',
+                scope   : this,
+                success : function(form, action) {
+                    this.submitFormResult(form, action);
+                }, 
+                failure : function(form, action) {
+                    this.submitFormResult(form, action);
+                }
+            });
+        } else {
+            Ext.MessageBox.alert('Errors', 
+                'Kolom bertanda (<font color="red">*</font>) harus diisi !!');
         }
-        
-        this.cancel();
+    },
+    submitFormResult: function(form, action) {
+        if (action.result.success) {
+            this.cancel();
+            Ext.getCmp('emailTemplateForm').activated_tab_handler();
+        } else {
+            Ext.Msg.show({
+                title:'Error',
+                msg: action.result.msg,
+                buttons: Ext.Msg.OK,
+                icon: Ext.Msg.ERROR
+            });
+        }
     },
     cancel: function() {
         Ext.getCmp('emailTemplateForm').enableDisableForm(false);

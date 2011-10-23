@@ -107,6 +107,7 @@ public class UtilityBackendController {
         
         final Map<String, Object> jsonData = new HashMap<String, Object>();
         final EmailTemplate obj = utilityService.getCurrentEmailTemplate(1);
+        Integer totalData = 0;
         if (obj != null) {
             jsonData.put("id", obj.getId());
             jsonData.put("createdDate", obj.getCreatedDate());
@@ -115,7 +116,10 @@ public class UtilityBackendController {
             jsonData.put("carbonCopy", obj.getCarbonCopy());
             jsonData.put("subject", obj.getSubject());
             jsonData.put("emailBody", obj.getEmailBody());
+            totalData += 1;
         }
+        
+        jsonData.put("totalData", totalData);
         
         return jsonData;
     }
