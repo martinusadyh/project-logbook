@@ -3,6 +3,7 @@ package id.web.martinusadyh.logbook.domain.trx;
 import id.web.martinusadyh.logbook.domain.BaseEntity;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -21,7 +22,7 @@ public class LogBookHeader extends BaseEntity {
     @Column(name="log_date")
     private Date logDate;
     
-    @OneToMany(mappedBy = "logBookHeader")
+    @OneToMany(mappedBy = "logBookHeader", cascade= CascadeType.ALL)
     private List<LogBookDetails> logBookDetails;
 
     public List<LogBookDetails> getLogBookDetails() {
