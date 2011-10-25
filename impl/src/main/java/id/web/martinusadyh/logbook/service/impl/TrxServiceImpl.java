@@ -2,6 +2,7 @@ package id.web.martinusadyh.logbook.service.impl;
 
 import id.web.martinusadyh.logbook.domain.trx.LogBookHeader;
 import id.web.martinusadyh.logbook.service.TrxService;
+import java.util.Date;
 import java.util.List;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,5 +33,22 @@ public class TrxServiceImpl implements TrxService {
         return (Long) sessionFactory.getCurrentSession()
                 .createQuery("select count(lh.id) from LogBookHeader lh")
                 .uniqueResult();
+    }
+
+    @Override
+    public LogBookHeader findLogBookHeaderByTransactionDate(Date trxDate) {
+        return (LogBookHeader) sessionFactory.getCurrentSession()
+                .createQuery("from LogBookHeader lbh inner join fetch lbh.logBookDetails where date(lbh.logDate) = date(:trxDate)")
+                .setParameter("trxDate", trxDate)
+                .uniqueResult();
+    }
+
+    @Override
+    @Transactional(readOnly=false)
+    public void saveLogBookHeader(LogBookHeader lbh) {
+        if (lbh.getId() != null) {
+            lbh.setLastUpdateDate(new Date());
+        }
+        sessionFactory.getCurrentSession().saveOrUpdate(lbh);
     }
 }

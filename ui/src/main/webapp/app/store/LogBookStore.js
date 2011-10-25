@@ -7,7 +7,6 @@ Ext.define('logbook.store.LogBookStore', {
     proxy: {
         type: 'ajax',
         api: {
-            save: '/logbook/ui/json/entri/save',
             read: '/logbook/ui/json/entri/list'
         },
         

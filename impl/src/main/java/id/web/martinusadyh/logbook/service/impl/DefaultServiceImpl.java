@@ -62,4 +62,20 @@ public class DefaultServiceImpl implements DefaultService {
     public void save(Module module) {
         sessionFactory.getCurrentSession().saveOrUpdate(module);
     }
+
+    @Override
+    public Category findCategoryById(Integer idCategory) {
+        return (Category) sessionFactory.getCurrentSession()
+                .createQuery("from Category c where c.id = :idCategory")
+                .setParameter("idCategory", idCategory)
+                .uniqueResult();
+    }
+
+    @Override
+    public Module findModuleById(Integer idModule) {
+        return (Module) sessionFactory.getCurrentSession()
+                .createQuery("from Module m where m.id = :idModule")
+                .setParameter("idModule", idModule)
+                .uniqueResult();
+    }
 }

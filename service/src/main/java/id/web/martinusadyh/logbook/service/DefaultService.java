@@ -19,4 +19,8 @@ public interface DefaultService {
     public void save(Category category);
 
     public void save(Module module);
+
+    public Category findCategoryById(Integer idCategory);
+
+    public Module findModuleById(Integer idModule);
 }
