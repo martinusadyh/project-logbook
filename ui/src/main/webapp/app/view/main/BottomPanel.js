@@ -15,6 +15,10 @@ Ext.define('logbook.view.main.BottomPanel', {
                     name: 'idUser',
                     id: 'idUser'
                 }, {
+                    xtype: 'hiddenfield',
+                    name: 'systemDate',
+                    id: 'systemDate'
+                }, {
                     xtype: 'tbfill'
                 }, {
                     xtype: 'tbtext',
