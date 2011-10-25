@@ -20,7 +20,7 @@ Ext.define('logbook.view.entri.form.DetailLogBookForm', {
             xtype: 'timefield',
             fieldLabel: 'Time Reporting <font color="red">*</font>',
             format: 'H:i',
-            name: 'timeReporting',
+            name: 'timeReport',
             id: 'timeReporting',
             anchor: '100%',
             //disabled: true,
@@ -28,7 +28,7 @@ Ext.define('logbook.view.entri.form.DetailLogBookForm', {
         }, {
             xtype: 'combobox',
             fieldLabel: 'Received By <font color="red">*</font>',
-            name: 'receivedBy',
+            name: 'idReceived',
             id: 'receivedBy',
             displayField: 'userName',
             valueField: 'id',
@@ -64,15 +64,14 @@ Ext.define('logbook.view.entri.form.DetailLogBookForm', {
             xtype: 'timefield',
             fieldLabel: 'Time Solved <font color="red">*</font>',
             format: 'H:i',
-            name: 'timeSolved',
+            name: 'timeSolve',
             id: 'timeSolved',
             anchor: '100%',
-            //disabled: true,
             allowBlank: false
         }, {
             xtype: 'combobox',
             fieldLabel: 'Solved By <font color="red">*</font>',
-            name: 'solvedBy',
+            name: 'idSolvedBy',
             id: 'solvedBy',
             displayField: 'userName',
             valueField: 'id',
@@ -82,7 +81,7 @@ Ext.define('logbook.view.entri.form.DetailLogBookForm', {
         }, {
             xtype: 'combobox',
             fieldLabel: 'Category <font color="red">*</font>',
-            name: 'category',
+            name: 'idCategory',
             displayField: 'categoryName',
             valueField: 'id',
             editable: false,
@@ -90,7 +89,7 @@ Ext.define('logbook.view.entri.form.DetailLogBookForm', {
         }, {
             xtype: 'combobox',
             fieldLabel: 'Module <font color="red">*</font>',
-            name: 'module',
+            name: 'idModule',
             displayField: 'moduleName',
             valueField: 'id',
             editable: false,
@@ -116,6 +115,10 @@ Ext.define('logbook.view.entri.form.DetailLogBookForm', {
                 text: 'Send Email',
                 iconCls: 'icon-email',
                 action: 'send_email'
+            }, {
+                xtype: 'hiddenfield',
+                name: 'sysDate',
+                id: 'sysDate'
             }]
         }];
         
