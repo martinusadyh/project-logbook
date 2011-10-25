@@ -14,13 +14,16 @@
         <intercept-url pattern="/lib" access="permitAll" />
         <intercept-url pattern="/login.html" access="permitAll" />
         <intercept-url pattern="/main.js" access="permitAll" />
-        <intercept-url pattern="/ui/**" access="permitAll"/>
+        <intercept-url pattern="/ui/json/utility/userprofile/save" access="permitAll" />
+        
+        <intercept-url pattern="/ui/json/**" access="hasRole('ROLE_USER_PAGE')"/>
         <intercept-url pattern="/launcher.html" access="hasRole('ROLE_USER_PAGE')"/>
         <intercept-url pattern="/launcher.js" access="hasRole('ROLE_USER_PAGE')"/>
+        
         <form-login login-page="/login.html" default-target-url="/ui/json/default-page" />
         
         <logout invalidate-session="true" />
-        <!-- <access-denied-handler ref="accessDeniedHandler" /> -->
+        <access-denied-handler ref="accessDeniedHandler" />
     </http>
     <!--
     <beans:bean id="exceptionTranslationFilter"
@@ -33,12 +36,13 @@
         class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
         <beans:property name="loginFormUrl" value="/login.html"/>
     </beans:bean>
+    -->
     
     <beans:bean id="accessDeniedHandler"
         class="org.springframework.security.web.access.AccessDeniedHandlerImpl">
         <beans:property name="errorPage" value="/ui/json/access-denied"/>
     </beans:bean>
-    -->
+    
     <authentication-manager>
         <authentication-provider user-service-ref='myUserDetailsService'>
             <password-encoder hash="md5" />
