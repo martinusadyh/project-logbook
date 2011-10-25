@@ -25,8 +25,10 @@ Ext.application({
             success: function(result, request) {
                 var text = Ext.JSON.decode(result.responseText);
                 Ext.getCmp('idUser').setValue(text.id);
+                Ext.getCmp('systemDate').setValue(text.currentDate);
                 Ext.getCmp('bottomPanelUsername').setText(text.userName);
                 Ext.getCmp('bottomPanelSystemDate').setText(text.currentDate);
+                
             }
         });
     }
