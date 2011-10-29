@@ -1,0 +1,38 @@
+{"totalCount":1,
+    "items":[{
+        "id":1,
+        "logBookDetails":[{
+            "fromUser":"s",
+            "moduleName":"Module 3",
+            "solvedBy":"demo",
+            "problem":"a",
+            "solution":"a",
+            "lastUpdateDate":"25/10/2011",
+            "id":1,
+            "categoryName":"Category 1",
+            "timeReport":"00:30",
+            "userName":"demo",
+            "suspect":"a",
+            "createdDate":"25/10/2011",
+            "timeSolved":"00:15"
+        },{
+            "fromUser":"ww",
+            "moduleName":"Module 0",
+            "solvedBy":"demo",
+            "problem":"ww",
+            "solution":"ww",
+            "lastUpdateDate":"25/10/2011",
+            "id":2,
+            "categoryName":"Category 2",
+            "timeReport":"00:30",
+            "userName":"demo",
+            "suspect":"ww",
+            "createdDate":"25/10/2011",
+            "timeSolved":"00:15"
+        }],
+        "totalLaporan":2,
+        "logDate":"25/10/2011",
+        "createdDate":1319561298000,
+        "lastUpdateDate":1319561325000
+    }]
+}
