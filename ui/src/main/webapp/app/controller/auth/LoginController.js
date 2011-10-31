@@ -54,12 +54,14 @@ Ext.define('logbook.controller.auth.LoginController', {
     register_new_user: function() {
         // cek this form is valid 
         if (Ext.getCmp('userProfileForm').getForm().isValid()) {
-            username = Ext.getCmp('userName').getValue();
-            passUser = Ext.getCmp('password').getValue();
-            passEmail = Ext.getCmp('passwordEmail').getValue();
+            var username = Ext.getCmp('userName').getValue();
+            var passUser = Ext.getCmp('password').getValue();
+            var passEmail = Ext.getCmp('passwordEmail').getValue();
             
-            encryptedUserPass = hex_md5(username, passUser);
-            encryptedEmailPass = hex_md5(username, passEmail);
+            var tmpPass = passUser + '{' + username + '}';
+            
+            var encryptedUserPass = hex_md5(tmpPass);
+            var encryptedEmailPass = hex_md5(username, passEmail);
             
             // update the field
             Ext.getCmp('password').setValue(encryptedUserPass);
