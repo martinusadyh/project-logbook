@@ -2,6 +2,7 @@ Ext.define('logbook.controller.entri.EntriLogBookController', {
     extend: 'Ext.app.Controller',
     stores: [
         'LogBookStore',
+        'LogBookDetailStore',
         'UserProfileStore',
         'CategoryStore',
         'ModuleStore'
@@ -10,7 +11,8 @@ Ext.define('logbook.controller.entri.EntriLogBookController', {
         'LogBookModel',
         'UserProfileModel',
         'CategoryModel',
-        'ModuleModel'
+        'ModuleModel',
+        'LogBookDetailModel'
     ],
     views: [
         'entri.EntriLogBookPanel',
@@ -22,6 +24,9 @@ Ext.define('logbook.controller.entri.EntriLogBookController', {
     
     init: function() {
         this.control({
+            'tableLogBook': {
+                itemclick: this.tableSelection
+            },
             'entriLogBookPanel button[action=save_detail_logbook]': {
                 click: this.save_detail_logbook
             }, 
@@ -32,6 +37,22 @@ Ext.define('logbook.controller.entri.EntriLogBookController', {
                 click: this.send_email
             }
         });
+    },
+    tableSelection: function(grid, record) {
+        /* just for debugging only
+        console.log('detail ' + record.logBookDetails());
+        console.log('count ' + record.logBookDetails().getCount());
+        record.logBookDetails().each(function(details) {
+            console.log('details ' + details.get('problem'));
+        });
+        */
+        
+        var detailStore = record.logBookDetails();
+        Ext.getCmp('tableDetailLogBook').getStore()
+            .loadRecords(detailStore.getRange(0,detailStore.getCount()),{
+                addRecords: false
+            }
+        );
     },
     save_detail_logbook: function() {
         sysdate = Ext.getCmp('systemDate').getValue();
@@ -65,7 +86,9 @@ Ext.define('logbook.controller.entri.EntriLogBookController', {
     },
     submitFormResult: function(form, action) {
         if (action.result.success) {
-            console.log('save success');
+            Ext.getCmp('detailLogBookForm').getForm().reset();
+            this.getLogBookStoreStore().read();
+            this.tableSelection();
         } else {
             Ext.Msg.show({
                 title:'Error',

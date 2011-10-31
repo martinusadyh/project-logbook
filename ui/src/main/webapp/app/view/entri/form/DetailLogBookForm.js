@@ -23,7 +23,6 @@ Ext.define('logbook.view.entri.form.DetailLogBookForm', {
             name: 'timeReport',
             id: 'timeReporting',
             anchor: '100%',
-            //disabled: true,
             allowBlank: false
         }, {
             xtype: 'combobox',

@@ -34,7 +34,8 @@ public class TrxBackendController {
     @Autowired private UtilityService utilityService;
     
     private final SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-    private final SimpleDateFormat timeFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+    private final SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
+    private final SimpleDateFormat dateTimeFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
     
     @RequestMapping(value="/json/entri/list", method=RequestMethod.GET)
     public @ResponseBody Map<String, Object> getAllLogBook(
@@ -45,6 +46,7 @@ public class TrxBackendController {
         final Long totalRows = trxService.countLogBookHeader();
         final List<LogBookHeader> obj = trxService.findAllLogBook(start, limit);
         List<Map<String, Object>> items = new ArrayList<Map<String, Object>>();
+        List<Map<String, Object>> details = new ArrayList<Map<String, Object>>();
         
         if (obj != null) {
             for (LogBookHeader lh : obj) {
@@ -54,7 +56,26 @@ public class TrxBackendController {
                 row.put("lastUpdateDate", lh.getLastUpdateDate());
                 row.put("logDate", dateFormat.format(lh.getLogDate()));
                 row.put("totalLaporan", lh.getLogBookDetails().size());
-                
+                details = new ArrayList<Map<String, Object>>();
+                for (LogBookDetails lbd : lh.getLogBookDetails()) {
+                    Map<String, Object> detailRow = new HashMap<String, Object>();
+                    detailRow.put("id", lbd.getId());
+                    detailRow.put("createdDate", dateFormat.format(lbd.getCreatedDate()));
+                    detailRow.put("lastUpdateDate", dateFormat.format(lbd.getLastUpdateDate()));
+                    detailRow.put("timeReport", timeFormat.format(lbd.getTimeReporting()));
+                    detailRow.put("userName", lbd.getReceivedBy().getUserName());
+                    detailRow.put("fromUser", lbd.getFromUser());
+                    detailRow.put("problem", lbd.getProblem());
+                    detailRow.put("suspect", lbd.getSuspect());
+                    detailRow.put("solution", lbd.getSolution());
+                    detailRow.put("timeSolved", timeFormat.format(lbd.getTimeSolved()));
+                    detailRow.put("solvedBy", lbd.getSolvedBy().getUserName());
+                    detailRow.put("categoryName", lbd.getCategory().getCategoryName());
+                    detailRow.put("moduleName", lbd.getModule().getModuleName());
+                    
+                    details.add(detailRow);
+                }
+                row.put("logBookDetails", details);
                 items.add(row);
             }
             
@@ -109,8 +130,8 @@ public class TrxBackendController {
             }
             
             // time format
-            final Date timeReporting = timeFormat.parse(sysDate + " " + timeReport);
-            final Date timeSolved = timeFormat.parse(sysDate + " " + timeSolve);
+            final Date timeReporting = dateTimeFormat.parse(sysDate + " " + timeReport);
+            final Date timeSolved = dateTimeFormat.parse(sysDate + " " + timeSolve);
             
             obj.setLastUpdateDate(new Date());
             obj.setTimeReporting(timeReporting);

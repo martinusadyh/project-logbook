@@ -3,7 +3,7 @@ Ext.define('logbook.view.entri.form.TableDetailLogBook', {
     alias: 'widget.tableDetailLogBook',
     id: 'tableDetailLogBook',
     columnLines: true,
-    store: 'LogBookStore',
+    store: 'LogBookDetailStore',
     
     initComponent: function() {
         this.columns = [
@@ -24,11 +24,11 @@ Ext.define('logbook.view.entri.form.TableDetailLogBook', {
                 hidden: true,
                 flex: 1
             }, {
-                header: 'Reporting Time', 
-                dataIndex: 'timeReporting'
+                header: 'Time Reporting', 
+                dataIndex: 'timeReport'
             }, {
                 header: 'Received By', 
-                dataIndex: 'receivedBy'
+                dataIndex: 'userName'
             }, {
                 header: 'From', 
                 dataIndex: 'fromUser'
@@ -49,10 +49,10 @@ Ext.define('logbook.view.entri.form.TableDetailLogBook', {
                 dataIndex: 'solvedBy'
             }, {
                 header: 'Category',
-                dataIndex: 'category'
+                dataIndex: 'categoryName'
             }, {
                 header: 'Module',
-                dataIndex: 'module'
+                dataIndex: 'moduleName'
             }
         ];
         

@@ -1,12 +1,13 @@
-Ext.define('logbook.store.LogBookStore', {
+Ext.define('logbook.store.LogBookDetailStore', {
     extend: 'Ext.data.Store',
-    model: 'logbook.model.LogBookModel',
+    model: 'logbook.model.LogBookDetailModel',
     autoLoad: true,
     pageSize: 50,
     
     proxy: {
         type: 'ajax',
         api: {
+            // reading header again ??
             read: '/logbook/ui/json/entri/list'
             //read: 'dummy-data/entri.json'
         },
