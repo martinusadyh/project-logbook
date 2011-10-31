@@ -8,7 +8,6 @@
         "firstName":"joko",
         "lastName":"kondo-kondo",
         "emailAddress":"joko@kondo.com",
-        "passwordEmail":"123okoj",
         "password":"jokoajah"
     },{
         "id":2,
@@ -18,7 +17,6 @@
         "firstName":"joko2",
         "lastName":"kondo-kondo2",
         "emailAddress":"joko@kondo.com",
-        "passwordEmail":"123okoj2",
         "password":"jokoajah2"
     }]
 }

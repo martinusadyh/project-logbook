@@ -33,9 +33,6 @@ public class UserProfile extends BaseEntity {
     @Column(name="email_address")
     private String emailAddress;
     
-    @Column(name="password_email")
-    private String passwordEmail;
-    
     @Column(name="password")
     private String password;
     
@@ -104,14 +101,6 @@ public class UserProfile extends BaseEntity {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getPasswordEmail() {
-        return passwordEmail;
-    }
-
-    public void setPasswordEmail(String passwordEmail) {
-        this.passwordEmail = passwordEmail;
     }
 
     public String getUserName() {

@@ -67,7 +67,6 @@ public class UtilityBackendController {
             jsonData.put("firstName", obj.getFirstName());
             jsonData.put("lastName", obj.getLastName());
             jsonData.put("emailAddress", obj.getEmailAddress());
-            jsonData.put("passwordEmail", obj.getPasswordEmail());
         }
         
         return jsonData;

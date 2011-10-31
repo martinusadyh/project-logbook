@@ -56,16 +56,13 @@ Ext.define('logbook.controller.auth.LoginController', {
         if (Ext.getCmp('userProfileForm').getForm().isValid()) {
             var username = Ext.getCmp('userName').getValue();
             var passUser = Ext.getCmp('password').getValue();
-            var passEmail = Ext.getCmp('passwordEmail').getValue();
             
             var tmpPass = passUser + '{' + username + '}';
             
             var encryptedUserPass = hex_md5(tmpPass);
-            var encryptedEmailPass = hex_md5(username, passEmail);
             
             // update the field
             Ext.getCmp('password').setValue(encryptedUserPass);
-            Ext.getCmp('passwordEmail').setValue(encryptedEmailPass);
             
             // TODO: We need use store for all CRUD operation.
             Ext.getCmp('userProfileForm').getForm().submit({

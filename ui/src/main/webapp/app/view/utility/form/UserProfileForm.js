@@ -66,15 +66,6 @@ Ext.define('logbook.view.utility.form.UserProfileForm', {
                 allowBlank: false
             }, {
                 xtype: 'textfield',
-                fieldLabel: 'Email Password <font color="red">*</font>',
-                inputType: 'password',
-                name: 'passwordEmail',
-                id: 'passwordEmail',
-                anchor: '100%',
-                disabled: true,
-                allowBlank: false
-            }, {
-                xtype: 'textfield',
                 fieldLabel: 'Password <font color="red">*</font>',
                 inputType: 'password',
                 name: 'password',
@@ -103,14 +94,12 @@ Ext.define('logbook.view.utility.form.UserProfileForm', {
             this.enableDisableComponent('firstName', true);
             this.enableDisableComponent('lastName', true);
             this.enableDisableComponent('emailAddress', true);
-            this.enableDisableComponent('passwordEmail', true);
         } else {
             this.enableDisableComponent('userName', false);
             this.enableDisableComponent('password', false);
             this.enableDisableComponent('firstName', false);
             this.enableDisableComponent('lastName', false);
             this.enableDisableComponent('emailAddress', false);
-            this.enableDisableComponent('passwordEmail', false);
         }
     }
 });
