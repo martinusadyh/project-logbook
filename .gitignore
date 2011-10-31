@@ -5,3 +5,11 @@
 /datasource/target/
 /ui-controller/target/
 /ui/target/
+/domain/.settings/
+/datasource/.settings/
+/.settings/
+/service/.settings/
+/impl/.settings/
+/jpa/.settings/
+/ui-controller/.settings/
+/ui/.settings/
