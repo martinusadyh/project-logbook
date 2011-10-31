@@ -58,6 +58,7 @@ public class UtilityBackendController {
         
         final Map<String, Object> jsonData = new HashMap<String, Object>();
         final UserProfile obj = utilityService.getCurrentProfile(id);
+        Integer totalData = 0;
         if (obj != null) {
             jsonData.put("id", obj.getId());
             jsonData.put("createdDate", obj.getCreatedDate());
@@ -67,7 +68,10 @@ public class UtilityBackendController {
             jsonData.put("firstName", obj.getFirstName());
             jsonData.put("lastName", obj.getLastName());
             jsonData.put("emailAddress", obj.getEmailAddress());
+            totalData += 1;
         }
+        
+        jsonData.put("totalData", totalData);
         
         return jsonData;
     }
@@ -105,7 +109,7 @@ public class UtilityBackendController {
     public @ResponseBody Map<String, Object> getCurrentEmailTemplate() {
         
         final Map<String, Object> jsonData = new HashMap<String, Object>();
-        final EmailTemplate obj = utilityService.getCurrentEmailTemplate(1);
+        final EmailTemplate obj = utilityService.getCurrentEmailTemplate();
         Integer totalData = 0;
         if (obj != null) {
             jsonData.put("id", obj.getId());

@@ -11,7 +11,7 @@ import java.util.List;
 public interface UtilityService {
     
     public void saveEmailTemplate(EmailTemplate emailTemplate);
-    public EmailTemplate getCurrentEmailTemplate(Integer id);
+    public EmailTemplate getCurrentEmailTemplate();
     
     public void saveUserProfile(UserProfile userProfile);
     public UserProfile getCurrentProfile(Integer id);

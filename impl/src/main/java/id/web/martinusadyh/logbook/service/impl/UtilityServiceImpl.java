@@ -30,10 +30,10 @@ public class UtilityServiceImpl implements UtilityService {
     }
 
     @Override
-    public EmailTemplate getCurrentEmailTemplate(Integer id) {
+    public EmailTemplate getCurrentEmailTemplate() {
         return (EmailTemplate) sessionFactory.getCurrentSession()
-                .createQuery("from EmailTemplate t where t.id = :templateId")
-                .setParameter("templateId", id)
+                .createQuery("from EmailTemplate t")
+                .setMaxResults(1)
                 .uniqueResult();
     }
 

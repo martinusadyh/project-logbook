@@ -77,8 +77,33 @@ Ext.define('logbook.view.utility.form.UserProfileForm', {
         ];
         
         this.callParent(arguments);
+        this.activated_tab_handler();
     },
-    
+    activated_tab_handler: function() {
+        Ext.Ajax.request({
+            url: '/logbook/ui/json/utility/userprofile/finduser',
+            //url: 'dummy-data/null-result.json',
+            method: 'GET',
+            params: {
+                id: Ext.getCmp('idUser').getValue()
+            },
+            success: function(result, request) {
+                var text = Ext.JSON.decode(result.responseText);
+                if (text.totalData == 1) {
+                    Ext.getCmp('id').setValue(text.id);
+                    Ext.getCmp('createdDate').setValue(text.createdDate);
+                    Ext.getCmp('lastUpdateDate').setValue(text.lastUpdateDate);
+                    Ext.getCmp('userName').setValue(text.userName);
+                    Ext.getCmp('firstName').setValue(text.firstName);
+                    Ext.getCmp('lastName').setValue(text.lastName);
+                    Ext.getCmp('emailAddress').setValue(text.emailAddress);
+                } else {
+                    Ext.getCmp('userProfileForm').enableDisableForm(true);
+                    Ext.getCmp('userProfilePanel').btnEditOnClick();
+                }
+            }
+        });
+    },
     enableDisableComponent: function(widgetId, isEnable) {
         if (isEnable) {
             Ext.getCmp(widgetId).enable(true);
